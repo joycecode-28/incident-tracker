@@ -1,10 +1,11 @@
 from flask import Flask, request, jsonify
 import mysql.connector
+import os
 
 db = mysql.connector.connect(
     host="localhost",
     user="root",
-    password="Mysql@123",
+    password=os.getenv("DB_PASSWORD"),
     database="incident_db")
 
 db_cursor = db.cursor(dictionary=True)
